@@ -1,0 +1,48 @@
+{
+  "name": "rnconverter",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test:unit": "jest",
+    "flow": "flow",
+    "flow-stop": "flow stop",
+    "lint": "eslint src",
+    "test": "npm run lint && npm run flow && npm run test:unit"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "lodash": "^4.17.5",
+    "react": "^16.3.1",
+    "react-native": "^0.54.4",
+    "react-native-navigation": "^1.1.432",
+    "react-redux": "^5.0.7",
+    "redux": "^3.7.2",
+    "redux-logger": "^3.0.6",
+    "redux-persist": "^5.6.12",
+    "redux-saga": "^0.16.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.2.2",
+    "babel-jest": "22.4.3",
+    "babel-preset-react-native": "4.0.0",
+    "eslint": "^4.19.1",
+    "eslint-plugin-babel": "^5.0.0",
+    "eslint-plugin-flowtype": "^2.46.1",
+    "eslint-plugin-react": "^7.7.0",
+    "eslint-plugin-react-native": "^3.2.1",
+    "flow-bin": "^0.65.0",
+    "jest": "22.4.3",
+    "react-test-renderer": "^16.3.0-alpha.1"
+  },
+  "jest": {
+    "preset": "react-native",
+    "testMatch": [
+      "**/__tests__/**/*.js",
+      "**/?(*.)(spec|test).js?(x)"
+    ],
+    "testPathIgnorePatterns": [
+      "/node_modules/"
+    ]
+  }
+}

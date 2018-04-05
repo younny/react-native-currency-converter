@@ -1,0 +1,134 @@
+{
+    "time": "2018-03-29",
+    "base": "EUR",
+    "rates": [
+        {
+            "currency": "USD",
+            "rate": "1.2321"
+        },
+        {
+            "currency": "JPY",
+            "rate": "131.15"
+        },
+        {
+            "currency": "BGN",
+            "rate": "1.9558"
+        },
+        {
+            "currency": "CZK",
+            "rate": "25.425"
+        },
+        {
+            "currency": "DKK",
+            "rate": "7.4530"
+        },
+        {
+            "currency": "GBP",
+            "rate": "0.87490"
+        },
+        {
+            "currency": "HUF",
+            "rate": "312.13"
+        },
+        {
+            "currency": "PLN",
+            "rate": "4.2106"
+        },
+        {
+            "currency": "RON",
+            "rate": "4.6565"
+        },
+        {
+            "currency": "SEK",
+            "rate": "10.2843"
+        },
+        {
+            "currency": "CHF",
+            "rate": "1.1779"
+        },
+        {
+            "currency": "ISK",
+            "rate": "121.50"
+        },
+        {
+            "currency": "NOK",
+            "rate": "9.6770"
+        },
+        {
+            "currency": "HRK",
+            "rate": "7.4323"
+        },
+        {
+            "currency": "RUB",
+            "rate": "70.8897"
+        },
+        {
+            "currency": "TRY",
+            "rate": "4.8976"
+        },
+        {
+            "currency": "AUD",
+            "rate": "1.6036"
+        },
+        {
+            "currency": "BRL",
+            "rate": "4.0938"
+        },
+        {
+            "currency": "CAD",
+            "rate": "1.5895"
+        },
+        {
+            "currency": "CNY",
+            "rate": "7.7468"
+        },
+        {
+            "currency": "HKD",
+            "rate": "9.6696"
+        },
+        {
+            "currency": "IDR",
+            "rate": "16933.98"
+        },
+        {
+            "currency": "ILS",
+            "rate": "4.3262"
+        },
+        {
+            "currency": "INR",
+            "rate": "80.2960"
+        },
+        {
+            "currency": "KRW",
+            "rate": "1310.89"
+        },
+        {
+            "currency": "MXN",
+            "rate": "22.5249"
+        },
+        {
+            "currency": "MYR",
+            "rate": "4.7658"
+        },
+        {
+            "currency": "NZD",
+            "rate": "1.7098"
+        },
+        {
+            "currency": "PHP",
+            "rate": "64.374"
+        },
+        {
+            "currency": "SGD",
+            "rate": "1.6158"
+        },
+        {
+            "currency": "THB",
+            "rate": "38.478"
+        },
+        {
+            "currency": "ZAR",
+            "rate": "14.6210"
+        }
+    ]
+}

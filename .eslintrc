@@ -1,0 +1,48 @@
+{
+    "parser": "babel-eslint",
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended"
+    ],
+    "plugins": [
+        "react-native",
+        "react",
+        "flowtype"
+    ],
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true,
+            "modules": true
+        }
+    },
+    "env": {
+        "node": true,
+        "jest": true,
+        "es6": true,
+        "react-native/react-native"
+    },
+    "globals": {
+        "__DEV__": true
+    },
+    "rules": {
+        /*
+        *                 Best Practices
+        */
+        "semi": 0,
+        "no-use-before-define": 0,
+         /*
+         *                React
+         */
+        "react/prefer-stateless-function": [
+          2, { "ignorePureComponents": true }
+        ],
+         /*
+         *                FlowType
+         */
+        "flowtype/semi": [
+          2,
+          "always"
+        ],
+        "flowtype/no-dupe-keys": 2
+    }
+}

@@ -1,7 +1,7 @@
 ### react-native-currency-converter
 
 * Features
-    - Calculation of currency agains to Euro
+    - Calculation of currency against to Euro
     - History of conversions that user made previously.
     - Reusability of conversion set from history.
 

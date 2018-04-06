@@ -27,6 +27,14 @@ Set up Api base url to ApiConfig
       export default {
         baseUrl: 'https://api.github.com'
        }
+Change endpoint which desired at services/Api.js.
+
+    e.g
+     const getRates = () => {
+        return instance.get(`${baseURL}/[ENDPOINT]`)
+                .then(response => ({ response }))
+                .catch(error => ({ error }))
+    }
 
 -------------
 

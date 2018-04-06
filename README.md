@@ -11,7 +11,8 @@
     - Immutable Data
     - Axios
 
-* Transformer and Reconciler for immutable data is imported from (https://www.npmjs.com/package/redux-persist-seamless-immutable)
+* Transformer and Reconciler for immutable data is imported from
+    (https://www.npmjs.com/package/redux-persist-seamless-immutable)
 
  -------------   
 
@@ -22,10 +23,10 @@
 
 Set up Api base url to ApiConfig
 
-e.g
-  export default {
-    baseUrl: 'https://api.github.com'
-  }
+    e.g
+      export default {
+        baseUrl: 'https://api.github.com'
+       }
 
 -------------
 

@@ -1,13 +1,12 @@
 import storage from 'redux-persist/lib/storage'
-//import immutableTransform from 'redux-persist-transform-immutable'
-//import immutableTransform from '../services/ImmutableTransform'
-
-//import hardSet from 'redux-persist/lib/stateReconciler/hardSet'
+//import ImmutableReconciler from '../libs/ImmutableReconciler'
+import { ImmutableTransformer } from '../libs/ImmutableTransformer'
 
 export default {
     key: 'history',
     storage,
-    transforms: [],
-    whitelist: ['history']
-    //stateReconciler: hardSet
+    transforms: [ImmutableTransformer],
+    whitelist: ['history'],
+    blacklist: ['converter']
+    // stateReconciler: [ImmutableReconciler()]
 }

@@ -25,7 +25,7 @@ export default (reducers, rootSaga) => {
 
     const store = createStore(persistedReducers, composeEnhancers(...enhancers))
 
-    persistStore(store, {}, () => {
+    persistStore(store, [], () => {
             store.dispatch(startupActions.startup())
         }
     )

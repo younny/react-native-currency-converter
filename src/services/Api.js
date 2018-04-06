@@ -1,8 +1,7 @@
 import axios from 'axios'
+import AppConfig from '../configs/AppConfig'
 
-const BASE_URL = 'https://api.github.com'
-
-const create = (baseURL=BASE_URL) => {
+const create = (baseURL=AppConfig.baseUrl) => {
     let instance = axios.create({ baseURL })
 
     instance.interceptors.request.use((config) => config, (error) => Promise.reject(error))
@@ -11,7 +10,7 @@ const create = (baseURL=BASE_URL) => {
     //instance.defaults.headers.common['Authorization'] = ''
 
     const getRates = () => {
-        return instance.get(`${baseURL}/users`)
+        return instance.get(`${baseURL}/rates`)
                 .then(response => ({ response }))
                 .catch(error => ({ error }))
     }

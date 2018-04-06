@@ -4,7 +4,8 @@ import { Types } from './actions'
 const initialState = {
     rates: null,
     error: null,
-    fetching: false
+    fetching: false,
+//    result: null
 }
 
 export default (state=initialState, action) => {
@@ -26,7 +27,14 @@ export default (state=initialState, action) => {
               fetching: false,
               error: action.payload
             }
+        // case Types.CAL_COMPLETE:
+        //   return {
+        //     ...state,
+        //     result: action.payload
+        //   }
         default:
             return state
     }
 }
+
+export const getRate = (state) =>  state.converter.rates

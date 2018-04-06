@@ -8,6 +8,10 @@ export default StyleSheet.create({
       width: '90%',
       backgroundColor: 'white'
     },
+    buttonContainer: {
+      width: '90%',
+      justifyContent: 'space-between'
+    },
     labelContainer: {
       flex: 0.4,
       marginRight: Metrics.pd.double

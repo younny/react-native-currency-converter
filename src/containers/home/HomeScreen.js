@@ -3,7 +3,9 @@ import * as React from 'react'
 import {
     View,
     Text,
-    TouchableOpacity
+    TouchableOpacity,
+    Button,
+    ActivityIndicator
 } from 'react-native'
 import { connect } from 'react-redux'
 import _ from 'lodash'
@@ -17,19 +19,20 @@ import styles from './HomeScreen.style'
 
 
 type Props = {
-    getRates: Function,
-    saveConversion: Function,
-    store: Object,
-    rates: Array<Object>,
-    history: Object,
-    navigator: Object
+  getRates: Function,
+  saveConversion: Function,
+  store: Object,
+  rates: Array<Object>,
+  history: Object,
+  navigator: Object
 };
 
 type State = {
-    result: number,
-    fromCur: string,
-    toCur: string,
-    rate: number
+  input: number,
+  result: number,
+  fromCur: string,
+  toCur: string,
+  rate: number
 };
 
 class HomeScreen extends React.Component<Props, State> {
@@ -46,12 +49,7 @@ class HomeScreen extends React.Component<Props, State> {
     }
 
     showCurrencies = (loc) => {
-      // Navigation.showModal({
-      //   component: {
-      //     name: 'rates',
-      //     passProps: { rates: this.props.rates, onCurrencySelected: this._onCurrencySelected, loc } }
-      // })
-
+      console.log(this.props.rates)
       this.props.navigator.push({
           screen: 'rates',
           passProps: { rates: this.props.rates, onCurrencySelected: this._onCurrencySelected, loc },
@@ -60,13 +58,15 @@ class HomeScreen extends React.Component<Props, State> {
 
     findRate = (cur) => _.find(this.props.rates, (r) => r.currency == cur).rate
 
-    getRate = (fromCur, rate) => fromCur == 'EUR' ? 1/rate : rate
+    getRate = (fromCur, rate) => fromCur == 'EUR' ? rate : 1/rate
 
     _onToSelected = () => this.showCurrencies('to')
 
     _onFromSelected = () => this.showCurrencies('from')
 
     _onCurrencySelected = ({ currency, rate }, loc) => {
+      const { input } = this.state
+
       let fromCur, toCur
       if(loc == 'to'){
         toCur = currency
@@ -75,8 +75,9 @@ class HomeScreen extends React.Component<Props, State> {
         toCur = 'EUR'
         fromCur = currency
       }
+      let properRate = this.getRate(fromCur, rate)
       this.props.saveConversion({ KEY: `${fromCur}TO${toCur}`, RATE: rate, DATE: new Date() })
-      this.setState({ fromCur, toCur, rate: this.getRate(fromCur, rate) })
+      this.setState({ fromCur, toCur, rate: properRate, result: (input * properRate) })
     }
 
     _onNumberUpdated = (text) => {
@@ -98,20 +99,29 @@ class HomeScreen extends React.Component<Props, State> {
     }
 
     _onHistoryPressed = () => {
+      const history = this.props.history.asMutable()
         this.props.navigator.push({
           screen: 'history',
-          passProps: { history: this.props.history.conversions, onConversionSelected: this._onConversionSelected },
+          passProps: {
+            history: history.reverse(),
+            onConversionSelected: this._onConversionSelected
+          }
         })
     }
+
+    _onRefresh = () => this.props.getRates()
 
     render() {
         const { fromCur, toCur, result } = this.state
         return (
                 <View style={[styles.container, styles.centering]}>
-                    <View style={[styles.row, styles.section]}>
+                    <View style={[styles.row, styles.section, styles.buttonContainer]}>
                         <TouchableOpacity onPress={this._onHistoryPressed}>
                             <Text style={styles.historyLabel}>Show History</Text>
                         </TouchableOpacity>
+
+                        <Button title="Refresh" onPress={this._onRefresh} />
+                        <ActivityIndicator size="small" hidesWhenStopped animating={this.props.fetching}/>
                     </View>
                   <View style={styles.contentContainer} >
                     <View style={[styles.row, styles.section]}>
@@ -147,7 +157,9 @@ class HomeScreen extends React.Component<Props, State> {
 const mapStateToProps = (state) => {
     return {
         rates: state.converter.rates,
-        history: state.history
+        history: state.history,
+        fetching: state.converter.fetching,
+        error: state.converter.error
     }
 }
 

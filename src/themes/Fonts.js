@@ -3,10 +3,10 @@ export default {
         /* Font size */
         small: 11,
         medium: 14,
-        h1: 32,
-        h2: 27,
-        h3: 22,
-        h4: 17
+        h1: 27,
+        h2: 22,
+        h3: 17,
+        h4: 12
     },
     type :{
         /* Font family */

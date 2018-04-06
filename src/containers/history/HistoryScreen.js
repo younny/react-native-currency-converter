@@ -4,8 +4,6 @@ import {
     View,
     Text,
     TouchableOpacity,
-    ScrollView,
-    SectionList,
     FlatList
 } from 'react-native'
 import _  from 'lodash'
@@ -14,7 +12,7 @@ import styles from './HistoryScreen.style'
 
 type Props = {
     navigator: Object,
-    history: Object,
+    history: Array,
     onConversionSelected: Function
 };
 
@@ -29,17 +27,19 @@ class HistoryScreen extends React.PureComponent<Props> {
   _keyExtractor = (item, index) => `h-${index}`
 
   renderItem = ({ item }) => {
-    const set = this.extractConversionSet(item)
+    const { KEY, DATE, RATE } = item
+    const set = this.extractConversionSet(KEY)
+
     return(
       <TouchableOpacity style={styles.historyItem} onPress={() => this._onConversionSelected(set)}>
-        <View style={[styles.row, styles.dataRow]}>
-            <Text style={styles.headerText}>{`${set.fromCur} to ${set.toCur}`}</Text>
-        </View>
+          <Text style={styles.headerText}>{`${set.fromCur} to ${set.toCur}`}</Text>
+          <Text style={styles.dateText}>{DATE && DATE.toString()}</Text>
+          <Text style={styles.dateText}>{RATE && RATE.toString()}</Text>
       </TouchableOpacity>
     )
   }
 
-  extractConversionSet = (key) => ({ fromCur: key.substring(0,3), toCur: key.substring(5,8) })
+  extractConversionSet = (key: string="") => ({ fromCur: key.substring(0,3), toCur: key.substring(5,8) })
 
 
   // renderSection = (key, item) => {
@@ -59,7 +59,7 @@ class HistoryScreen extends React.PureComponent<Props> {
             <FlatList
               keyExtractor={this._keyExtractor}
               renderItem={this.renderItem}
-              data={Object.keys(this.props.history)}
+              data={this.props.history}
             />
         </View>
     )
